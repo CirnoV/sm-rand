@@ -5,8 +5,6 @@ RandExtension extension;
 
 SMEXT_LINK(&extension);
 
-IdentityToken_t *g_pCoreToken;
-
 static cell_t GetRandomInt(IPluginContext *pCtx, const cell_t *params)
 {
     cell_t nmin = params[1];
@@ -31,8 +29,6 @@ const sp_nativeinfo_t MyNatives[] = {
 
 bool RandExtension::SDK_OnLoad(char *error, size_t maxlen, bool late)
 {
-    g_pCoreToken = sharesys->CreateIdentity(sharesys->FindIdentType("CORE"), this);
-
     return true;
 }
 
