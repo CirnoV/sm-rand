@@ -5,7 +5,7 @@ RandExtension extension;
 
 SMEXT_LINK(&extension);
 
-static cell_t GetRandomInt(IPluginContext *pCtx, const cell_t *params)
+static cell_t GetRandomIntEx(IPluginContext *pCtx, const cell_t *params)
 {
     cell_t nmin = params[1];
     cell_t nmax = params[2];
@@ -13,7 +13,7 @@ static cell_t GetRandomInt(IPluginContext *pCtx, const cell_t *params)
     return get_random_int(nmin, nmax);
 }
 
-static cell_t GetRandomFloat(IPluginContext *pCtx, const cell_t *params)
+static cell_t GetRandomFloatEx(IPluginContext *pCtx, const cell_t *params)
 {
     float nmin = sp_ctof(params[1]);
     float nmax = sp_ctof(params[2]);
@@ -22,8 +22,8 @@ static cell_t GetRandomFloat(IPluginContext *pCtx, const cell_t *params)
 }
 
 const sp_nativeinfo_t MyNatives[] = {
-    {"GetRandomInt", GetRandomInt},
-    {"GetRandomFloat", GetRandomFloat},
+    {"GetRandomIntEx", GetRandomIntEx},
+    {"GetRandomFloatEx", GetRandomFloatEx},
     {NULL, NULL},
 };
 
