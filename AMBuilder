@@ -1,0 +1,35 @@
+# vim: set sts=2 ts=8 sw=2 tw=99 et ft=python:
+import os
+
+for cxx in builder.targets:
+  binary = Extension.ExtLibrary(builder, cxx, 'rand.ext')
+  arch = {'x86': 'i686', 'x86_64': 'x86_64'}[binary.compiler.target.arch]
+  if builder.options.opt == '1':
+    directory = 'release'
+  else:
+    directory = 'debug'
+
+  path = ''
+  if binary.compiler.target.platform == 'linux':
+    path = os.path.join(builder.currentSourcePath, 'target', f'{arch}-unknown-linux-gnu', directory, 'librand.a')
+  elif binary.compiler.target.platform == 'windows':
+    path = os.path.join(builder.currentSourcePath, 'target', f'{arch}-pc-windows-msvc', directory, 'rand.lib')
+  else:
+    raise
+  binary.compiler.postlink += [path]
+
+  binary.compiler.cxxincludes += [os.path.join(builder.currentSourcePath, 'rand')]
+
+  if binary.compiler.family == 'msvc':
+    binary.compiler.linkflags += [
+      'userenv.lib',
+      'ws2_32.lib',
+      'bcrypt.lib',
+    ]
+
+  binary.sources += [
+    'rand/extension.cpp',
+    os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp'),
+  ]
+
+  Extension.extensions = [builder.Add(binary)]
