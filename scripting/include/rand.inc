@@ -5,7 +5,7 @@
 
 native int GetRandomIntEx(int nmin, int nmax);
 
-native int GetRandomFloatEx(float nmin, float nmax);
+native float GetRandomFloatEx(float nmin, float nmax);
 
 public Extension __ext_rand =
 {
