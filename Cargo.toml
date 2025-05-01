@@ -1,8 +1,8 @@
 [package]
 name = "sm-rand"
-version = "0.1.0"
+version = "1.1.0"
 authors = ["CirnoV <cirnov59@gmail.com>"]
-edition = "2018"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -11,7 +11,7 @@ name = "rand"
 crate-type = ["staticlib"]
 
 [dependencies]
-rand = "0.8.4"
+rand = "0.9"
 
 [build-dependencies]
-cbindgen = "0.19"
+cbindgen = "0.28"
