@@ -1,6 +1,6 @@
 [package]
 name = "sm-rand"
-version = "1.1.0"
+version = "1.1.1"
 authors = ["CirnoV <cirnov59@gmail.com>"]
 edition = "2024"
 
